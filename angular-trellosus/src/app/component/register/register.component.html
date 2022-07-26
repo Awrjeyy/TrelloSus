@@ -1,0 +1,75 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      
+      <div *ngIf="!isSuccessful" class="register-form">
+        <h4>User</h4>
+        <form>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="title"
+              [(ngModel)]="form.email"
+              name="title"
+            />
+          </div>
+          <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="first_name"
+              [(ngModel)]="form.first_name"
+              name="first_name"
+            />
+          </div>
+          <div class="form-group">
+              <label for="LastName">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="last_name"
+                [(ngModel)]="form.last_name"
+                name="last_name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                [(ngModel)]="form.password"
+                name="password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password1"
+                [(ngModel)]="form.password1"
+                name="password1"
+              />
+            </div>
+        </form>
+        
+        
+        <button
+          type="submit"
+          class="badge badge-success mb-2"
+          (click)="onRegisterSubmit()"
+        >
+          Register
+        </button>
+        <p>{{ message }}</p>
+      </div>
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>
+
+  
