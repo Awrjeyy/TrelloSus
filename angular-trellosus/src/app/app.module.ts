@@ -9,8 +9,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { UsersModel } from './models/users/users.model';
 import { RegisterComponent } from './component/register/register.component';
-import { UsersComponent } from './component/users/users/users.component';
-import { UsersDetailsComponent } from './component/users-details/users-details/users-details.component';
+import { UsersComponent } from './component/users/users.component';
+import { UsersDetailsComponent } from './component/users-details/users-details.component';
+import { UsersProfileComponent } from './component/users-profile/users-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UsersDetailsComponent } from './component/users-details/users-details/u
     RegisterComponent,
     UsersComponent,
     UsersDetailsComponent,
+    UsersProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -30,7 +30,7 @@ export class UsersDetailsComponent implements OnInit {
     }
   }
   getUserDetail(id: string): void{
-    this.authService.getUser(id).subscribe({
+    this.authService.getCurrentUser(id).subscribe({
       next: (data) => {
         this.currentViewedUser = data;
         console.log(data);

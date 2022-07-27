@@ -45,3 +45,15 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+class LoginSerializer(serializers.ModelSerializer):
+
+    email =  serializers.CharField()
+    password = serializers.CharField(required=True, write_only=True, validators=[validate_password])
+
+    class Meta:
+        model: CustomUser
+        fields = (
+            'email',
+            'password',
+        )
