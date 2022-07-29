@@ -12,6 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'bio',
+            'user_img',
         )
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -57,3 +58,38 @@ class LoginSerializer(serializers.ModelSerializer):
             'email',
             'password',
         )
+
+class UpdateUserSerializer(serializers.ModelSerializer):
+    user_img = serializers.ImageField(required=False)
+    alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only alphabet characters are allowed.')
+    first_name = serializers.CharField(label="First name", required=False, max_length=100, validators=[alpha])
+    last_name = serializers.CharField(label="Last name", required=False, max_length=100, validators=[alpha])
+    bio = serializers.CharField(default="Put your bio", required=False)
+
+    class Meta:
+        model = CustomUser
+        fields = (
+            'user_img',
+            'first_name',
+            'last_name',
+            'bio',
+        )
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        return super(UpdateUserSerializer, self).__init__(*args, **kwargs)
+
+    def updateuser(self, instance, validated_data):
+        
+        user = self.request.user
+        if user.pk != instance.pk:
+            raise serializers.ValidationError({"authorize": "You dont have permission for this user."})
+        
+        user.first_name = validated_data['first_name']
+        user.last_name = validated_data['last_name']
+        user.user_img = validated_data['user_img']
+        user.bio = validated_data['bio']
+
+        user.save()
+
+        return instance

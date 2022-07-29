@@ -1,0 +1,68 @@
+
+<div *ngIf="currentUser.id" class="edit-form">
+    <h4>User's Profile</h4>
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="user_img">First Name</label>
+            <input
+              type="file"
+              class="form-control"
+              id="user_img"
+              enctype="multipart/form-data" 
+              [(ngModel)]="currentUser.user_img"
+              [ngModelOptions]="{standalone: true}"
+              name="user_img"
+              (change)="onChange($event)"
+            />
+          </div>
+          
+        <div class="form-group">
+        <label for="title">First Name</label>
+        <input
+            type="text"
+            class="form-control"
+            id="first_name"
+            [(ngModel)]="currentUser.first_name"
+            [ngModelOptions]="{standalone: true}"
+            name="first_name"
+        />
+        </div>
+        <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input
+            type="text"
+            class="form-control"
+            id="last_name"
+            [(ngModel)]="currentUser.last_name"
+            [ngModelOptions]="{standalone: true}"
+            name="last_name"
+        />
+        </div>
+        <div class="form-group">
+            <label for="bio">Bio</label>
+            <input
+                type="text"
+                class="form-control"
+                id="bio"
+                [(ngModel)]="currentUser.bio"
+                [ngModelOptions]="{standalone: true}"
+                name="bio"
+            />
+            </div>
+      
+    </form>
+    
+    
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="updateUser()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  <div *ngIf="!currentUser.id">
+    <br />
+    <p>Cannot access this Profile...</p>
+  </div>

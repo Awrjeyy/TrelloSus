@@ -4,6 +4,8 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { UsersComponent } from './component/users/users.component';
 import { UsersDetailsComponent } from './component/users-details/users-details.component';
+import { UsersProfileComponent } from './component/users-profile/users-profile/users-profile.component';
+import { UsersProfileUpdateComponent } from './component/users-profile-update/users-profile-update.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -11,6 +13,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'users', component: UsersComponent},
   {path: 'users-detail', component: UsersDetailsComponent},
+  {path: 'users-profile', component: UsersProfileComponent},
+  {path: 'users-profile/:id', component: UsersProfileUpdateComponent},
 ];
 
 @NgModule({

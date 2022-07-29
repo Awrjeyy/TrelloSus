@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     
     'users.apps.UsersConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 MIDDLEWARE = [
@@ -169,5 +170,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8080',
+    'http://localhost:8080', 
+    'http://localhost:4200'
 )

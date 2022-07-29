@@ -5,12 +5,19 @@ import { UsersModel } from 'src/app/models/users/users.model';
 import { TokenStorageService } from '../token-storage/token-storage.service';
 const AUTH_API = 'http://localhost:8000/api';
 const ALL_USERS = 'http://localhost:8000/api/users';
-const ONLY_USER = 'http://localhost:8000/api/users';
+const UPDATE_USER = 'http://localhost:8000/api/users-update';
 const REGISTER_USER = 'http://localhost:8000/api/register';
 const httpOptions = {
   headers: new HttpHeaders({ 
     'Content-Type':  'application/json'
    })
+};
+const httpOptionsMulti = {
+  headers: new HttpHeaders({
+    'Content-Type': 'multipart/form-data',
+    
+
+  })
 };
 @Injectable({
   providedIn: 'root'
@@ -43,5 +50,8 @@ export class AuthService {
     this.userid = this.tokenStorageService.getUser().id;
 
     return this.http.get(`${ALL_USERS}/${this.userid}`);
+  }
+  updateCurrentUser(id: any, formData: FormData): Observable<any>{
+    return this.http.post(`${UPDATE_USER}/${id}`, formData);
   }
 }

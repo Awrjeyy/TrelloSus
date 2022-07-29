@@ -19,12 +19,25 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
     bio = models.TextField(default="Your Bio")
     objects = CustomUserManager()
-
+    user_img = models.ImageField(blank=True, null=True, default='default.jpg',
+        upload_to='profile-pics',
+    )
     class Meta:
         ordering = ['-date_joined']
 
     def __str__(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+        super().save()
+
+        img = Image.open(self.user_img.path)
+
+        if img.height > 500 or img.width > 500:
+            new_img = (300,300)
+            img.thumbnail(new_img)
+            img.save(self.user_img.path)
+
 
 @receiver(post_save, sender=User)
 def create_auth_token(sender, instance=None, created=False, **kwargs):

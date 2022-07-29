@@ -1,45 +1,55 @@
 <div *ngIf="viewMode; else editable">
-    <div *ngIf="currentViewedUser.id">
-      <h4>User</h4>
-      <div>
-        <label><strong>Email:</strong></label> {{ currentViewedUser.email }}
-      </div>
-      <div>
-        <label><strong>First name:</strong></label>
-        {{ currentViewedUser.first_name }}
-      </div>
-      <div>
-        <label><strong>Last Name:</strong></label>
-        {{ currentViewedUser.last_name }}
-      </div>
-      <a
-        class="badge badge-warning"
-        routerLink="/users/{{ currentViewedUser.id }}"
-      >
-        Edit
-      </a>
+  <div *ngIf="currentViewedUser.id">
+    <h4>User</h4>
+    <div>
+      <label><strong>Email:</strong></label> {{ currentViewedUser.email }}
     </div>
-    <div *ngIf="!currentViewedUser">
-      <br />
-      <p>Please click on a User...</p>
+    <div>
+      <label><strong>First name:</strong></label>
+      {{ currentViewedUser.first_name }}
     </div>
+    <div>
+      <label><strong>Last Name:</strong></label>
+      {{ currentViewedUser.last_name }}
+    </div>
+    <a
+      class="badge badge-warning"
+      routerLink="/users/{{ currentViewedUser.id }}"
+    >
+      Edit
+    </a>
   </div>
-  <ng-template #editable>
-    <div *ngIf="currentViewedUser.id" class="edit-form">
-      <h4>User</h4>
-      <form>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="text"
-            class="form-control"
-            id="title"
-            [(ngModel)]="currentViewedUser.email"
-            name="title"
-          />
-        </div>
-        <div class="form-group">
-          <label for="FirstName">First Name</label>
+  <div *ngIf="!currentViewedUser">
+    <br />
+    <p>Please click on a User...</p>
+  </div>
+</div>
+<ng-template #editable>
+  <div *ngIf="currentViewedUser.id" class="edit-form">
+    <h4>User</h4>
+    <form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentViewedUser.email"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentViewedUser.first_name"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+          <label for="LastName">Last Name</label>
           <input
             type="text"
             class="form-control"
@@ -48,29 +58,19 @@
             name="description"
           />
         </div>
-        <div class="form-group">
-            <label for="LastName">Last Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="description"
-              [(ngModel)]="currentViewedUser.first_name"
-              name="description"
-            />
-          </div>
-      </form>
+    </form>
+    
+    
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
       
-      
-      <button
-        type="submit"
-        class="badge badge-success mb-2"
-        
-      >
-        Update
-      </button>
-      <p>{{ message }}</p>
-    </div>
-    <div *ngIf="!currentViewedUser.id">
-      <br />
-      <p>Cannot access this Tutorial...</p>
-    </div>
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  <div *ngIf="!currentViewedUser.id">
+    <br />
+    <p>Cannot access this Tutorial...</p>
+  </div>

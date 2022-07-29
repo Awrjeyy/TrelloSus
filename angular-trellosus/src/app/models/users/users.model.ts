@@ -12,5 +12,7 @@ export class UsersModel {
   password1?: string;
   first_name?: string;
   last_name?: string;
+  bio?: string;
+  user_img?: string[];
 }
 
