@@ -6,6 +6,9 @@ import { UsersComponent } from './component/users/users.component';
 import { UsersDetailsComponent } from './component/users-details/users-details.component';
 import { UsersProfileComponent } from './component/users-profile/users-profile/users-profile.component';
 import { UsersProfileUpdateComponent } from './component/users-profile-update/users-profile-update.component';
+import { TasksComponent } from './component/tasks/tasks.component';
+import { TasksDetailsComponent } from './component/tasks-details/tasks-details.component';
+import { BoardsComponent } from './component/boards/boards.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -15,6 +18,9 @@ const routes: Routes = [
   {path: 'users-detail', component: UsersDetailsComponent},
   {path: 'users-profile', component: UsersProfileComponent},
   {path: 'users-profile/:id', component: UsersProfileUpdateComponent},
+  {path: 'tasks', component: TasksComponent},
+  {path: 'tasks-details/:id', component: TasksDetailsComponent},
+  {path: 'boards', component: BoardsComponent}
 ];
 
 @NgModule({

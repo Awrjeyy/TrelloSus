@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './commons/helpers/auth.interceptor';
-
+import { MatSliderModule } from '@angular/material/slider';
+import {DragDropModule} from '@angular/cdk/drag-drop'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -13,6 +14,12 @@ import { UsersComponent } from './component/users/users.component';
 import { UsersDetailsComponent } from './component/users-details/users-details.component';
 import { UsersProfileComponent } from './component/users-profile/users-profile/users-profile.component';
 import { UsersProfileUpdateComponent } from './component/users-profile-update/users-profile-update.component';
+import { TasksComponent } from './component/tasks/tasks.component';
+import { TasksDetailsComponent, } from './component/tasks-details/tasks-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BoardsComponent } from './component/boards/boards.component';
+
 
 @NgModule({
   declarations: [
@@ -24,13 +31,19 @@ import { UsersProfileUpdateComponent } from './component/users-profile-update/us
     UsersDetailsComponent,
     UsersProfileComponent,
     UsersProfileUpdateComponent,
+    TasksComponent,
+    TasksDetailsComponent,
+    BoardsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

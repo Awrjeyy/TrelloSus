@@ -7,6 +7,8 @@ const AUTH_API = 'http://localhost:8000/api';
 const ALL_USERS = 'http://localhost:8000/api/users';
 const UPDATE_USER = 'http://localhost:8000/api/users-update';
 const REGISTER_USER = 'http://localhost:8000/api/register';
+const TASK_DETAILS = 'http://localhost:8000/api/tasks-details'
+const TASK_UPDATE = 'http://localhost:8000/api/tasks-update'
 const httpOptions = {
   headers: new HttpHeaders({ 
     'Content-Type':  'application/json'
@@ -53,5 +55,14 @@ export class AuthService {
   }
   updateCurrentUser(id: any, formData: FormData): Observable<any>{
     return this.http.post(`${UPDATE_USER}/${id}`, formData);
+  }
+  getAllTasks(): Observable<any> {
+    return this.http.get(AUTH_API + '/tasks');
+  }
+  getTask(id: any): Observable<any>{
+    return this.http.get(`${TASK_DETAILS}/${id}`);
+  } 
+  updateTask(id: any, formData: FormData): Observable<any>{
+    return this.http.put(`${TASK_UPDATE}/${id}`, formData);
   }
 }
